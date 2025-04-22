@@ -4,17 +4,22 @@
 
 name: Build and deploy Python app to Azure Web App - azureapp
 
+env:
+  AZURE_WEBAPP_NAME: azureapp
+  PYTHON_VERSION: '3.13'
+  
 on:
   push:
     branches:
       - main
   workflow_dispatch:
 
+permissions: 
+  contents: read
+  
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read #This is required for actions/checkout
 
     steps:
       - uses: actions/checkout@v4
